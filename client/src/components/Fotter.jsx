@@ -92,6 +92,23 @@ const Footer = () => {
                 }}
               >
                 <FaInstagram />
+                 <a
+                href="https://instagram.com/mandhare3243"
+                className="text-light"
+                style={{
+                  fontSize: "20px",
+                  transition: "color 0.3s, transform 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#e4405f";
+                  e.target.style.transform = "scale(1.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "white";
+                  e.target.style.transform = "scale(1)";
+                }}
+              >
+                <FaInstagram />
               </a>
             </div>
           </div>
