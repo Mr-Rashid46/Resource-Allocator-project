@@ -7,9 +7,7 @@ const Navbar = () => {
   const token = localStorage.getItem("token");
 
   const hideNavbarRoutes = ["/login", "/register"];
-  if (hideNavbarRoutes.includes(location.pathname)) {
-    return null;
-  }
+  if (hideNavbarRoutes.includes(location.pathname)) return null;
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -19,13 +17,18 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark sticky-top shadow"
-      style={{ backgroundColor: "black" }}
+      style={{
+        backgroundColor: "black",
+        transition: "all 0.3s ease",
+        padding: "0.5rem 1rem",
+      }}
     >
-      <div className="container-fluid">
+      <div className="container-fluid d-flex align-items-center justify-content-between">
         {/* Brand */}
         <NavLink
           className="navbar-brand d-flex align-items-center fw-bold text-light"
           to="/"
+          style={{ fontSize: "1.1rem" }}
         >
           <img
             src={head}
@@ -38,86 +41,89 @@ const Navbar = () => {
               objectFit: "cover",
             }}
           />
-          <span style={{ color: "#38bdf8" }}>Dbatu Scholar Hub</span>
+          <span style={{ color: "#38bdf8", whiteSpace: "nowrap" }}>
+            Dbatu Scholar Hub
+          </span>
         </NavLink>
 
-        {/* Toggle button */}
+        {/* Toggle Button */}
         <button
-          className="navbar-toggler bg-light"
+          className="navbar-toggler bg-light border-0 p-2"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style={{ outline: "none" }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navbar links */}
+        {/* Navbar Links */}
         <div
-          className="collapse navbar-collapse justify-content-between"
+          className="collapse navbar-collapse justify-content-lg-between"
           id="navbarNav"
         >
-          <ul className="navbar-nav mb-2 mb-lg-0 text-center">
+          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
             {token ? (
               <>
                 <li className="nav-item">
                   <NavLink
+                    to="/home"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/home"
                   >
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    to="/Notes"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/Notes"
                   >
                     Study Material
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    to="/About-us"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/About-us"
                   >
                     About Us
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    to="/Contact"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/Contact"
                   >
                     Contact
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    to="/Profile"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/Profile"
                   >
                     Profile
                   </NavLink>
@@ -127,24 +133,24 @@ const Navbar = () => {
               <>
                 <li className="nav-item">
                   <NavLink
+                    to="/login"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/login"
                   >
                     Login
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    to="/register"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link text-warning border-bottom border-2 border-warning px-3"
                         : "nav-link text-light px-3"
                     }
-                    to="/Register"
                   >
                     Register
                   </NavLink>
@@ -153,12 +159,18 @@ const Navbar = () => {
             )}
           </ul>
 
-          {/* Logout button (moves below links in mobile view) */}
+          {/* Logout button */}
           {token && (
-            <div className="text-center mt-2 mt-lg-0">
+            <div className="text-center mt-3 mt-lg-0">
               <button
-                className="btn btn-danger px-4 fw-semibold"
                 onClick={handleLogout}
+                className="btn btn-danger fw-semibold px-4"
+                style={{
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => (e.target.style.background = "#dc2626")}
+                onMouseLeave={(e) => (e.target.style.background = "#ef4444")}
               >
                 Logout
               </button>
@@ -166,6 +178,39 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+      {/* Responsive custom CSS */}
+      <style>
+        {`
+        @media (max-width: 992px) {
+          .navbar-brand span {
+            font-size: 0.95rem;
+          }
+          .navbar-nav .nav-link {
+            padding: 10px 0;
+          }
+          .navbar-nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .navbar-brand img {
+            width: 35px;
+            height: 35px;
+          }
+          .navbar-brand span {
+            font-size: 0.9rem;
+          }
+          .btn {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+          }
+        }
+      `}
+      </style>
     </nav>
   );
 };
