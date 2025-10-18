@@ -58,7 +58,7 @@ const Footer = () => {
             </p>
             <div className="d-flex justify-content-center justify-content-md-start gap-3">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/rashid-khopatkar-74a238308/"
                 className="text-light"
                 style={{
                   fontSize: "20px",
@@ -77,6 +77,24 @@ const Footer = () => {
               </a>
               <a
                 href="https://instagram.com/mandhare3243"
+                className="text-light"
+                style={{
+                  fontSize: "20px",
+                  transition: "color 0.3s, transform 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#e4405f";
+                  e.target.style.transform = "scale(1.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "white";
+                  e.target.style.transform = "scale(1)";
+                }}
+              >
+                <FaInstagram />
+              </a>
+               <a
+                href="https://instagram.com/mr_rashid46"
                 className="text-light"
                 style={{
                   fontSize: "20px",
