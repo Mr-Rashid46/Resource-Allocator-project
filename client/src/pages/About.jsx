@@ -151,7 +151,7 @@ const About = () => {
                   <p className="text-secondary small">
                     Specializes in Frontend development and database management.
                     Admin of Dbatu Scholor Hub.  Handles and Ensure the security of Data.
-                    Languages Known: <strong className="text-warning">C++, C, Python, javascript, PHP</strong>
+                    Languages Known: <strong className="text-warning">C++, C, Python, javascript,React</strong>
                   </p>
                 </div>
               </div>
